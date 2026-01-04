@@ -14,7 +14,6 @@ function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Loader animation
     const duration = 1800
     const start = performance.now()
 
@@ -45,7 +44,6 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    // Time update
     const updateTime = () => {
       const now = new Date()
       setCurrentTime(now.toLocaleTimeString())
@@ -56,7 +54,6 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    // Theme setup
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
@@ -132,7 +129,6 @@ function Home() {
 
       card.scrollIntoView({ behavior: 'smooth', inline: 'center' })
     } else {
-      // Second click - navigate
       e.preventDefault()
       const routes = ['/about', '/projects', '/contact']
       navigate(routes[index])

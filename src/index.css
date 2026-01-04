@@ -7,7 +7,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-color: #1a1a1a;
   color: #fff;
@@ -17,41 +16,31 @@ body {
   flex-direction: column;
   overflow: hidden;
 }
-
 body.loading {
   overflow: hidden;
 }
-
 html[data-theme="light"] {
   background-color: #f5f5f5;
   color: #1a1a1a;
 }
-
 html[data-theme="light"] body {
   background-color: #f5f5f5;
   color: #1a1a1a;
 }
-
-/* Page indicators */
 .page[data-active="true"] {
   background-color: #fff;
   transform: scaleY(1.5);
   opacity: 1;
 }
-
 html[data-theme="light"] .page {
   background-color: #ccc;
 }
-
 html[data-theme="light"] .page[data-active="true"] {
   background-color: #000;
 }
-
 html[data-theme="light"] .page:hover {
   background-color: #333;
 }
-
-/* Gallery items */
 .gallery-item.active {
   width: 320px;
   transform: translateY(-6px);
@@ -59,38 +48,28 @@ html[data-theme="light"] .page:hover {
   opacity: 1;
   z-index: 3;
 }
-
 .gallery-item.active span {
   transform: rotate(0deg);
 }
-
 .gallery-item.inactive {
   opacity: 0.45;
   transform: scale(0.96);
 }
-
 html[data-theme="light"] .gallery-item {
   background-color: #ddd;
 }
-
 html[data-theme="light"] .footer-left {
   color: #666;
 }
-
 html[data-theme="light"] .footer-right a {
   color: #666;
 }
-
 html[data-theme="light"] .footer-right a:hover {
   color: #1a1a1a;
 }
-
-/* Scrollbar hide */
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
   .gallery-item {
     width: 50px !important;
