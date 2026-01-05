@@ -14,7 +14,7 @@ function Projects() {
   const projects = [
     { name: 'Diane', color: '#950404', bgColor: '#1a0c0f', link: 'https://tranquil-pothos-181adb.netlify.app/' },
     { name: 'AgriConnect', color: '#800000', bgColor: '#1F0F12', link: 'https://github.com/KareruRei/AgriConnect' },
-    { name: 'Mr. Facilitator', color: '#5C1A1A', bgColor: '#1E1416', link: '#' },
+    { name: 'Mr. Facilitator', color: '#5C1A1A', bgColor: '#1E1416', link: 'https://github.com/KareruRei/Mr.-Facilitator' },
     { name: 'Direct Clothing', color: '#451A1A', bgColor: '#282020', link: 'https://github.com/KareruRei/DirectClothing' },
     { name: 'Password Manager', color: '#2E1A1A', bgColor: '#202020', link: 'https://github.com/KareruRei/PasswordManager' },
     { name: 'Clearance', color: '#1A1A1A', bgColor: '#141414', link: 'https://karerurei.github.io/Clearance/' },
