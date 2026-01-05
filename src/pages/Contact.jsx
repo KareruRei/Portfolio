@@ -2,7 +2,18 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Contact() {
+  const [currentTime, setCurrentTime] = useState('00:00:00')
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date()
+      setCurrentTime(now.toLocaleTimeString())
+    }
+    updateTime()
+    const interval = setInterval(updateTime, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -17,7 +28,12 @@ function Contact() {
   return (
     <div className="bg-[#1a1a1a] text-white font-sans min-h-screen flex flex-col overflow-hidden data-[theme=light]:bg-[#f5f5f5] data-[theme=light]:text-[#1a1a1a]" data-theme={theme}>
       <header className="flex justify-between items-center p-[40px_50px]">
-        <div className="text-[32px] font-bold text-[#c0c0c0] data-[theme=light]:text-[#333]">Let's Connect</div>
+        <div className="text-[32px] font-semibold text-[#c0c0c0] leading-none font-satoshi data-[theme=light]:text-[#333]">
+          CONNECT
+          <div className="text-[13px] tracking-[1px] mt-2 text-[#777] font-mono">
+            <span>{currentTime}</span>
+          </div>
+        </div>
         <div className="flex items-center gap-4">
           <button
             onClick={toggleTheme}
@@ -193,14 +209,6 @@ function Contact() {
             className="text-[#888] no-underline transition-colors duration-300 ease-in-out hover:text-white group"
           >
             GITHUB <span className="opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">↗</span>
-          </a>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#888] no-underline transition-colors duration-300 ease-in-out hover:text-white group"
-          >
-            X <span className="opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">↗</span>
           </a>
         </div>
       </footer>

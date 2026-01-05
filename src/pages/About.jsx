@@ -19,6 +19,33 @@ function About() {
       { title: "GSAP", img: "gsap.png", desc: "Animations and effects" },
       { title: "Electronics & Arduino", img: "arduino.png", desc: "Circuits and prototyping" },
   ];
+  const certificationsData = [
+      { title: "Electronics Foundations: Basic Circuits", img: "linkedin.png", desc: "Skills: Electronics · Circuit Design | Issued: Dec 2025" },
+      { title: "Programming Foundations: Databases", img: "linkedin.png", desc: "Skills: Database Development · Databases | Issued: Dec 2025" },
+      { title: "Electronics Foundations: Fundamentals", img: "linkedin.png", desc: "Skills: Electronics | Issued: Nov 2025" },
+      { title: "Learning Arduino: Foundations", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
+      { title: "Learning Arduino: Interfacing with Hardware", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
+      { title: "Fundamentals of Dynamic Programming", img: "linkedin.png", desc: "Skills: Dynamic Programming | Issued: Oct 2025" },
+      { title: "Networking Basics", img: "cisco.png", desc: "Issued: Oct 2025" },
+      { title: "Advanced Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Python · Algorithms | Issued: Sep 2025" },
+      { title: "Certificate for Notion Essentials Quiz", img: "notion.png", desc: "Issued: Sep 2025 · Expires: Sep 2027" },
+      { title: "Foundations of Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Algorithms | Issued: Sep 2025" },
+      { title: "Agentblazer Workshop Completion Certificate", img: "trailhead.png", desc: "Issued: Aug 2025" },
+      { title: "Python Data Structures: Stacks, Deques, and Queues", img: "linkedin.png", desc: "Skills: Data Structures | Issued: May 2025" },
+      { title: "Python: Recursion", img: "linkedin.png", desc: "Skills: Python · Programming | Issued: May 2025" },
+      { title: "Transition from Java to Python", img: "linkedin.png", desc: "Skills: Python | Issued: Mar 2025" },
+      { title: "Computer Science Principles: Digital Information", img: "linkedin.png", desc: "Skills: Computer Science | Issued: Jan 2025" },
+      { title: "Creating a Business Plan", img: "linkedin.png", desc: "Skills: Business Planning | Issued: Jan 2025" },
+      { title: "Entrepreneurship: Bootstrapping Your Business", img: "linkedin.png", desc: "Skills: Bootstrapping · Entrepreneurship | Issued: Jan 2025" },
+      { title: "Launching Your Creative Business", img: "linkedin.png", desc: "Skills: Launching Start-ups | Issued: Jan 2025" },
+      { title: "Running a Design Business: Creative Briefs", img: "linkedin.png", desc: "Skills: Creative Briefs | Issued: Jan 2025" },
+      { title: "Running a Design Business: The Staffing Rule Book", img: "linkedin.png", desc: "Skills: Talent Management | Issued: Jan 2025" },
+      { title: "Start a Design Business", img: "linkedin.png", desc: "Skills: Graphic Design · Small Business Management · Design | Issued: Jan 2025" },
+      { title: "Entrepreneurship Foundations", img: "linkedin.png", desc: "Skills: Entrepreneurship | Issued: Dec 2024" },
+      { title: "Explore Emerging Tech", img: "ibm.png", desc: "Issued: Sep 2024" },
+      { title: "Master Microsoft Teams", img: "linkedin.png", desc: "Skills: Microsoft Teams | Issued: Sep 2024" },
+      { title: "Master Microsoft Teams", img: "apc.png", desc: "Issued: Sep 2024" },
+    ];
   const hobbiesData = [
     { title: "Music Production", img: "music.jpg", desc: "Creating beats and sound design" },
     { title: "Gaming", img: "game.jpg", desc: "Strategy and competitive play" },
@@ -107,6 +134,19 @@ function About() {
       duration: 0.4,
       ease: 'power3.out',
     })
+
+    gsap.to('.certifications-section .skill', {
+      scrollTrigger: {
+        trigger: '.certifications-section',
+        start: 'top 85%',
+      },
+      y: 0,
+      opacity: 1,
+      stagger: 0.12,
+      duration: 0.4,
+      ease: 'power3.out',
+    })
+
     
     ScrollTrigger.refresh()
 
@@ -118,7 +158,7 @@ function About() {
     <div className="about-page bg-[#1a1a1a] text-white font-inter min-h-screen flex flex-col data-[theme=light]:bg-[#f5f5f5] data-[theme=light]:text-[#1a1a1a]" data-theme={theme}>
       <header className="flex justify-between items-center p-[40px_50px] fixed w-full top-0 bg-[rgba(26,26,26,0.9)] backdrop-blur-[10px] z-[100] data-[theme=light]:bg-[rgba(245,245,245,0.9)]" data-theme={theme}>
         <div className="text-[32px] font-semibold text-[#c0c0c0] leading-none font-satoshi data-[theme=light]:text-[#333]">
-          KARERU
+          ABOUT
           <div className="text-[13px] tracking-[1px] mt-2 text-[#777] font-mono">
             <span>{currentTime}</span>
           </div>
@@ -225,6 +265,51 @@ function About() {
           </div>
         </section>
 
+        <section className="snap-section certifications-section w-full overflow-hidden py-[120px]">
+          <div className="skills-header max-w-[800px] mx-auto mb-[60px] text-center">
+            <h2 className="text-[36px] mb-[15px] font-satoshi opacity-0 translate-y-[20px]">
+              Certifications
+            </h2>
+            <p className="text-[#9a9a9a] leading-[1.6] opacity-0 translate-y-[20px]">
+              Professional certifications and achievements demonstrating my skills.
+            </p>
+          </div>
+
+          <div className="w-max flex animate-scroll gap-4 mb-8">
+            {[...Array(2)].map((_, repeatIndex) =>
+              certificationsData.slice(0, Math.ceil(certificationsData.length / 2)).map((cert) => (
+                <div
+                  key={`${cert.title}-${repeatIndex}`}
+                  className="skill relative inline-flex items-center justify-center px-4 py-3 rounded-xl border border-[#2a2a2a] bg-[#1f1f1f] overflow-hidden opacity-0 translate-y-[20px] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-white"
+                >
+                  <div className="flex flex-col justify-center items-center text-center gap-1">
+                    <img src={cert.img} alt={cert.title} className="w-8 h-8 object-contain" />
+                    <h3 className="text-sm font-semibold">{cert.title}</h3>
+                    <small className="text-[#c5c5c5] text-[10px]">{cert.desc}</small>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+
+          <div className="w-max flex animate-scroll-reverse gap-4 mb-8">
+            {[...Array(2)].map((_, repeatIndex) =>
+              certificationsData.slice(Math.ceil(certificationsData.length / 2)).map((cert) => (
+                <div
+                  key={`${cert.title}-b-${repeatIndex}`}
+                  className="skill relative inline-flex items-center justify-center px-4 py-3 rounded-xl border border-[#2a2a2a] bg-[#1f1f1f] overflow-hidden opacity-0 translate-y-[20px] transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-white"
+                >
+                  <div className="flex flex-col justify-center items-center text-center gap-1">
+                    <img src={cert.img} alt={cert.title} className="w-8 h-8 object-contain" />
+                    <h3 className="text-sm font-semibold">{cert.title}</h3>
+                    <small className="text-[#c5c5c5] text-[10px]">{cert.desc}</small>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </section>
+
         <section className="snap-section hobbies-section w-full py-[120px]">
           <div className="skills-header max-w-[600px] mx-auto mb-[60px] text-center">
             <h2 className="text-[36px] mb-[15px] font-satoshi opacity-0 translate-y-[20px]">
@@ -254,13 +339,6 @@ function About() {
       </main>
 
       <style>{`
-        @keyframes scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 25s linear infinite;
-        }
         .about-page {
           scroll-behavior: smooth;
           scroll-snap-type: y mandatory;
@@ -327,17 +405,19 @@ function About() {
             grid-template-columns: 1fr 1fr;
           }
         }
-          @keyframes scroll {
+        @keyframes scroll {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
         }
-        .skills-track {
-          display: flex;
-          gap: 0.5 rem;
-          width: max-content;
+        @keyframes scroll-reverse {
+          from { transform: translateX(-50%); }
+          to { transform: translateX(0); }
         }
         .animate-scroll {
-          animation: scroll 50s linear infinite;
+          animation: scroll 60s linear infinite;
+        }
+        .animate-scroll-reverse {
+          animation: scroll-reverse 60s linear infinite;
         }
       `}</style>
     </div>

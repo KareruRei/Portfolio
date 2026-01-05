@@ -156,7 +156,7 @@ function Projects() {
     <div className="projects-container bg-[#1A1A1A] text-white font-sans min-h-screen flex flex-col overflow-hidden transition-colors duration-[600ms] ease-in-out">
       <header className="flex justify-between items-center p-[40px_50px]">
         <div className="text-[32px] font-bold text-[#c0c0c0] font-satoshi">
-          KARERU
+          BUILDS
           <div className="text-sm text-[#888] mt-1 font-mono">
             <span>{currentTime}</span>
           </div>
@@ -168,12 +168,12 @@ function Projects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="card absolute top-[35%] left-[50%] w-[70%] h-[500px] transform-style-preserve-3d -translate-x-1/2 -translate-y-1/2 rounded-2xl overflow-hidden bg-[rgba(26,26,26,0.35)] backdrop-blur-[14px] border border-[rgba(255,255,255,0.12)] shadow-[0_8px_32px_rgba(0,0,0,0.25)] text-white transition-all duration-300 ease-in-out"
+              className="card absolute top-[35%] left-[50%] w-[80%] h-[500px] transform-style-preserve-3d -translate-x-1/2 -translate-y-1/2 rounded-2xl overflow-hidden bg-[rgba(26,26,26,0.35)] backdrop-blur-[14px] border border-[rgba(255,255,255,0.12)] shadow-[0_8px_32px_rgba(0,0,0,0.25)] text-white transition-all duration-10 ease-in-out"
               style={{ backgroundColor: project.bgColor }}
               data-color={project.color}
             >
               <div className="copy absolute top-[25%] left-[60%] -translate-x-1/2 -translate-y-1/2 w-full">
-                <h1 className="text-left text-[50px] font-light tracking-[-0.05em] uppercase font-satoshi opacity-0 pointer-events-none">
+                <h1 className="text-left text-[50px] font-heavy tracking-[-0.05em] uppercase font-satoshi opacity-0 pointer-events-none">
                   {project.name}
                 </h1>
               </div>

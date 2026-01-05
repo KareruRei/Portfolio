@@ -172,7 +172,7 @@ function Home() {
       >
         <header className="flex justify-center items-center p-[40px_50px] relative">
           <div className="text-[32px] font-bold tracking-[2px] text-[#c0c0c0] absolute left-[50px] font-satoshi">
-            KARERU <br />
+            LACUESTA <br />
             <div className="text-[14px] font-normal tracking-[1px] mt-1 text-[#888] font-mono">
               <span>{currentTime}</span>
             </div>
