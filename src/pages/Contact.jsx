@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Contact() {
-  const [currentTime, setCurrentTime] = useState('00:00:00')
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
+  const [currentTime, setCurrentTime] = useState('00:00:00') // this is where we define the live clock state
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark') // this is where we define the theme state and read from localStorage if exists
 
+   // this is where we update the clock every second
   useEffect(() => {
     const updateTime = () => {
       const now = new Date()
@@ -14,11 +15,11 @@ function Contact() {
     const interval = setInterval(updateTime, 1000)
     return () => clearInterval(interval)
   }, [])
-
+  // this is where we apply the selected theme to the document root
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
-
+  // this is where we toggle the theme and save the choice in localStorage
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)

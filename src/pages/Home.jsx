@@ -3,16 +3,16 @@ import { useNavigate, Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 
 function Home() {
-  const [currentTime, setCurrentTime] = useState('08:44:59')
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
-  const [progress, setProgress] = useState(0)
-  const [showLoader, setShowLoader] = useState(true)
-  const [appVisible, setAppVisible] = useState(false)
-  const appRef = useRef(null)
-  const cardsRef = useRef([])
-  const pagesRef = useRef([])
-  const navigate = useNavigate()
-
+  const [currentTime, setCurrentTime] = useState('08:44:59') // this is where we declare state for the current time display
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark') // this is where we declare state for theme (dark/light) with default fallback
+  const [progress, setProgress] = useState(0) // this is where we declare state for loader progress percentage
+  const [showLoader, setShowLoader] = useState(true)  // this is where we control whether loader screen is visible
+  const [appVisible, setAppVisible] = useState(false) // this is where we control whether the main app content is visible
+  const appRef = useRef(null) // this is where we store a ref to the main app container
+  const cardsRef = useRef([]) // this is where we store refs to all gallery cards
+  const pagesRef = useRef([]) // this is where we store refs to the page indicators
+  const navigate = useNavigate() // this is where we get react-router's navigate function for programmatic routing
+  // this is where we get react-router's navigate function for programmatic routing
   useEffect(() => {
     const duration = 1800
     const start = performance.now()
@@ -42,7 +42,7 @@ function Home() {
     document.body.classList.add('loading')
     requestAnimationFrame(animateLoader)
   }, [])
-
+  // this is where we update current time every second
   useEffect(() => {
     const updateTime = () => {
       const now = new Date()
@@ -53,19 +53,21 @@ function Home() {
     return () => clearInterval(interval)
   }, [])
 
+  // this is where we apply the theme to the document root
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
+  // this is where we toggle between dark and light themes
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark'
     setTheme(newTheme)
     localStorage.setItem('theme', newTheme)
   }
-
+  // this is where we define card widths for collapsed and expanded states
   const COLLAPSED_WIDTH = 75
   const EXPANDED_WIDTH = 320
-
+  // this is where we collapse all gallery cards
   const collapseAll = () => {
     cardsRef.current.forEach((card, index) => {
       if (!card) return
@@ -93,7 +95,7 @@ function Home() {
       if (p) p.setAttribute('data-active', 'false')
     })
   }
-
+  // this is where we collapse all gallery cards
   const handleCardClick = (index, e) => {
     const card = cardsRef.current[index]
     if (!card) return
@@ -134,7 +136,7 @@ function Home() {
       navigate(routes[index])
     }
   }
-
+  // this is where we collapse cards when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
       const clickedInside = cardsRef.current.some((card) =>
@@ -239,7 +241,7 @@ function Home() {
           <div className="flex gap-[15px] items-center w-fit">
             <div
               ref={(el) => (cardsRef.current[0] = el)}
-              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#777] to-[#555] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
+              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#494848] to-[#b6b6b6] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
               data-theme={theme}
             >
               <Link
@@ -254,7 +256,7 @@ function Home() {
             </div>
             <div
               ref={(el) => (cardsRef.current[1] = el)}
-              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#777] to-[#555] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
+              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#891b1b] to-[#b6b6b6] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
               data-theme={theme}
             >
               <Link
@@ -269,7 +271,7 @@ function Home() {
             </div>
             <div
               ref={(el) => (cardsRef.current[2] = el)}
-              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#777] to-[#555] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
+              className="gallery-item w-[75px] h-[230px] bg-gradient-to-b from-[#09574f] to-[#b6b6b6] rounded-[14px] cursor-pointer overflow-hidden relative flex-shrink-0 transition-all duration-[550ms] ease-[cubic-bezier(.22,.61,.36,1)] data-[theme=light]:bg-[#ddd]"
               data-theme={theme}
             >
               <Link
@@ -300,7 +302,7 @@ function Home() {
               LINKEDIN <span className="arrow opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">↗</span>
             </a>
             <a
-              href="https://github.com/KareruRei"
+              href="https://github.com/KareruRei/kareru-portfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#888] no-underline transition-colors duration-300 ease-in-out hover:text-white group"

@@ -3,56 +3,65 @@ import { Link } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger) // this is where we register GSAP's ScrollTrigger plugin
 
-function About() {
-  const [currentTime, setCurrentTime] = useState('00:00:00')
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark')
-  const skillsData = [
-      { title: "Python", img: "python.png", desc: "Projects, scripts, and algorithms" },
-      { title: "Java", img: "java.png", desc: "Projects, scripts, and algorithms" },
-      { title: "HTML", img: "html.png", desc: "Web pages and layouts" },
-      { title: "CSS", img: "css.jpg", desc: "Styling and responsive design" },
-      { title: "Javascript", img: "javascript.jpg", desc: "Web interactivity and logic" },
-      { title: "React", img: "react.png", desc: "UI components and apps" },
-      { title: "Tailwind CSS", img: "tailwind.png", desc: "Utility-first styling" },
-      { title: "GSAP", img: "gsap.png", desc: "Animations and effects" },
-      { title: "Electronics & Arduino", img: "arduino.png", desc: "Circuits and prototyping" },
+function About() { // this is where the About component starts
+  const [currentTime, setCurrentTime] = useState('00:00:00')  // this is where we set up state for current time display
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark') // this is where we set up state for theme (dark/light)
+  // this is where we define skills data
+  const skillsData = [  
+    { title: "Python", img: "python.png", desc: "Projects, scripts, and algorithms" },
+    { title: "Java", img: "java.png", desc: "Projects, scripts, and algorithms" },
+    { title: "HTML", img: "html.png", desc: "Web pages and layouts" },
+    { title: "CSS", img: "css.jpg", desc: "Styling and responsive design" },
+    { title: "Javascript", img: "javascript.jpg", desc: "Web interactivity and logic" },
+    { title: "React", img: "react.png", desc: "UI components and apps" },
+    { title: "Tailwind CSS", img: "tailwind.png", desc: "Utility-first styling" },
+    { title: "GSAP", img: "gsap.png", desc: "Animations and effects" },
+    { title: "Electronics & Arduino", img: "arduino.png", desc: "Circuits and prototyping" },
   ];
+  // this is where we define certifications data
   const certificationsData = [
-      { title: "Electronics Foundations: Basic Circuits", img: "linkedin.png", desc: "Skills: Electronics · Circuit Design | Issued: Dec 2025" },
-      { title: "Programming Foundations: Databases", img: "linkedin.png", desc: "Skills: Database Development · Databases | Issued: Dec 2025" },
-      { title: "Electronics Foundations: Fundamentals", img: "linkedin.png", desc: "Skills: Electronics | Issued: Nov 2025" },
-      { title: "Learning Arduino: Foundations", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
-      { title: "Learning Arduino: Interfacing with Hardware", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
-      { title: "Fundamentals of Dynamic Programming", img: "linkedin.png", desc: "Skills: Dynamic Programming | Issued: Oct 2025" },
-      { title: "Networking Basics", img: "cisco.png", desc: "Issued: Oct 2025" },
-      { title: "Advanced Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Python · Algorithms | Issued: Sep 2025" },
-      { title: "Certificate for Notion Essentials Quiz", img: "notion.png", desc: "Issued: Sep 2025 · Expires: Sep 2027" },
-      { title: "Foundations of Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Algorithms | Issued: Sep 2025" },
-      { title: "Agentblazer Workshop Completion Certificate", img: "trailhead.png", desc: "Issued: Aug 2025" },
-      { title: "Python Data Structures: Stacks, Deques, and Queues", img: "linkedin.png", desc: "Skills: Data Structures | Issued: May 2025" },
-      { title: "Python: Recursion", img: "linkedin.png", desc: "Skills: Python · Programming | Issued: May 2025" },
-      { title: "Transition from Java to Python", img: "linkedin.png", desc: "Skills: Python | Issued: Mar 2025" },
-      { title: "Computer Science Principles: Digital Information", img: "linkedin.png", desc: "Skills: Computer Science | Issued: Jan 2025" },
-      { title: "Creating a Business Plan", img: "linkedin.png", desc: "Skills: Business Planning | Issued: Jan 2025" },
-      { title: "Entrepreneurship: Bootstrapping Your Business", img: "linkedin.png", desc: "Skills: Bootstrapping · Entrepreneurship | Issued: Jan 2025" },
-      { title: "Launching Your Creative Business", img: "linkedin.png", desc: "Skills: Launching Start-ups | Issued: Jan 2025" },
-      { title: "Running a Design Business: Creative Briefs", img: "linkedin.png", desc: "Skills: Creative Briefs | Issued: Jan 2025" },
-      { title: "Running a Design Business: The Staffing Rule Book", img: "linkedin.png", desc: "Skills: Talent Management | Issued: Jan 2025" },
-      { title: "Start a Design Business", img: "linkedin.png", desc: "Skills: Graphic Design · Small Business Management · Design | Issued: Jan 2025" },
-      { title: "Entrepreneurship Foundations", img: "linkedin.png", desc: "Skills: Entrepreneurship | Issued: Dec 2024" },
-      { title: "Explore Emerging Tech", img: "ibm.png", desc: "Issued: Sep 2024" },
-      { title: "Master Microsoft Teams", img: "linkedin.png", desc: "Skills: Microsoft Teams | Issued: Sep 2024" },
-      { title: "Master Microsoft Teams", img: "apc.png", desc: "Issued: Sep 2024" },
-    ];
+    { title: "Electronics Foundations: Basic Circuits", img: "linkedin.png", desc: "Skills: Electronics · Circuit Design | Issued: Dec 2025" },
+    { title: "Programming Foundations: Databases", img: "linkedin.png", desc: "Skills: Database Development · Databases | Issued: Dec 2025" },
+    { title: "Electronics Foundations: Fundamentals", img: "linkedin.png", desc: "Skills: Electronics | Issued: Nov 2025" },
+    { title: "Learning Arduino: Foundations", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
+    { title: "Learning Arduino: Interfacing with Hardware", img: "linkedin.png", desc: "Skills: Arduino | Issued: Nov 2025" },
+    { title: "Fundamentals of Dynamic Programming", img: "linkedin.png", desc: "Skills: Dynamic Programming | Issued: Oct 2025" },
+    { title: "Networking Basics", img: "cisco.png", desc: "Issued: Oct 2025" },
+    { title: "Advanced Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Python · Algorithms | Issued: Sep 2025" },
+    { title: "Certificate for Notion Essentials Quiz", img: "notion.png", desc: "Issued: Sep 2025 · Expires: Sep 2027" },
+    { title: "Foundations of Algorithmic Thinking with Python", img: "linkedin.png", desc: "Skills: Algorithms | Issued: Sep 2025" },
+    { title: "Agentblazer Workshop Completion Certificate", img: "trailhead.png", desc: "Issued: Aug 2025" },
+    { title: "Python Data Structures: Stacks, Deques, and Queues", img: "linkedin.png", desc: "Skills: Data Structures | Issued: May 2025" },
+    { title: "Python: Recursion", img: "linkedin.png", desc: "Skills: Python · Programming | Issued: May 2025" },
+    { title: "Transition from Java to Python", img: "linkedin.png", desc: "Skills: Python | Issued: Mar 2025" },
+    { title: "Computer Science Principles: Digital Information", img: "linkedin.png", desc: "Skills: Computer Science | Issued: Jan 2025" },
+    { title: "Creating a Business Plan", img: "linkedin.png", desc: "Skills: Business Planning | Issued: Jan 2025" },
+    { title: "Entrepreneurship: Bootstrapping Your Business", img: "linkedin.png", desc: "Skills: Bootstrapping · Entrepreneurship | Issued: Jan 2025" },
+    { title: "Launching Your Creative Business", img: "linkedin.png", desc: "Skills: Launching Start-ups | Issued: Jan 2025" },
+    { title: "Running a Design Business: Creative Briefs", img: "linkedin.png", desc: "Skills: Creative Briefs | Issued: Jan 2025" },
+    { title: "Running a Design Business: The Staffing Rule Book", img: "linkedin.png", desc: "Skills: Talent Management | Issued: Jan 2025" },
+    { title: "Start a Design Business", img: "linkedin.png", desc: "Skills: Graphic Design · Small Business Management · Design | Issued: Jan 2025" },
+    { title: "Entrepreneurship Foundations", img: "linkedin.png", desc: "Skills: Entrepreneurship | Issued: Dec 2024" },
+    { title: "Explore Emerging Tech", img: "ibm.png", desc: "Issued: Sep 2024" },
+    { title: "Master Microsoft Teams", img: "linkedin.png", desc: "Skills: Microsoft Teams | Issued: Sep 2024" },
+    { title: "Master Microsoft Teams", img: "apc.png", desc: "Issued: Sep 2024" },
+  ];
+  // this is where we define hobbies data
   const hobbiesData = [
     { title: "Music Production", img: "music.jpg", desc: "Creating beats and sound design" },
     { title: "Gaming", img: "game.jpg", desc: "Strategy and competitive play" },
     { title: "Reading", img: "books.jpg", desc: "Mangas, Manhwas and a bit of literature" },
     { title: "Photography", img: "photo.jpg", desc: "Visual storytelling" },
   ];
-
+  // this is where we toggle between dark and light themes
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark'
+    setTheme(newTheme)
+    localStorage.setItem('theme', newTheme)
+  }
+  // this is where we set up a timer to update current time every second
   useEffect(() => {
     const updateTime = () => {
       const now = new Date()
@@ -62,11 +71,11 @@ function About() {
     const interval = setInterval(updateTime, 1000)
     return () => clearInterval(interval)
   }, [])
-
+  // this is where we apply theme to document root whenever it changes
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
-
+   // this is where we set body scroll behavior for About page
   useEffect(() => {
     document.body.style.overflow = 'auto'
     document.body.style.overflowX = 'hidden'
@@ -75,18 +84,12 @@ function About() {
       document.body.style.overflowX = ''
     }
   }, [])
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark'
-    setTheme(newTheme)
-    localStorage.setItem('theme', newTheme)
-  }
-
+  // this is where we animate hero, skills, certifications, and hobbies sections using GSAP
   useEffect(() => {
     const tl = gsap.timeline({
       defaults: { ease: 'power4.out', duration: 1.2 },
     })
-
+    // this is where we animate hero text and hero visual
     tl.to('.hero-text > *', {
       y: 0,
       opacity: 1,
@@ -100,6 +103,7 @@ function About() {
       },
       '-=1'
     )
+    // this is where we animate capabilities header
     gsap.to('.skills-header > *', {
       scrollTrigger: {
         trigger: '.skills-section',
@@ -110,7 +114,7 @@ function About() {
       stagger: 0.2,
       duration: 0.2,
     })
-
+    // this is where we animate individual skills in infinite scroll
     gsap.to('.infinite-skills .skill', {
       scrollTrigger: {
         trigger: '.infinite-skills',
@@ -118,11 +122,11 @@ function About() {
       },
       y: 0,
       opacity: 1,
-      stagger: 0.1,
-      duration: 0.2,
-      ease: 'back.out(1.7)',
-    })
-
+      stagger: 0.02,
+      duration: 0.02,
+      ease: 'back.out(0.9)',
+    }) 
+    // this is where we animate hobbies section
     gsap.to('.hobbies-section .skill', {
       scrollTrigger: {
         trigger: '.hobbies-section',
@@ -130,11 +134,11 @@ function About() {
       },
       y: 0,
       opacity: 1,
-      stagger: 0.12,
-      duration: 0.4,
+      stagger: 0.02,
+      duration: 0.02,
       ease: 'power3.out',
     })
-
+    // this is where we animate certifications section
     gsap.to('.certifications-section .skill', {
       scrollTrigger: {
         trigger: '.certifications-section',
@@ -142,18 +146,19 @@ function About() {
       },
       y: 0,
       opacity: 1,
-      stagger: 0.12,
-      duration: 0.4,
+      stagger: 0.02,
+      duration: 0.02,
       ease: 'power3.out',
     })
 
     
     ScrollTrigger.refresh()
-
+    // this is where we clean up all ScrollTriggers on component unmount
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
     }
   }, [])
+  
   return (
     <div className="about-page bg-[#1a1a1a] text-white font-inter min-h-screen flex flex-col data-[theme=light]:bg-[#f5f5f5] data-[theme=light]:text-[#1a1a1a]" data-theme={theme}>
       <header className="flex justify-between items-center p-[40px_50px] fixed w-full top-0 bg-[rgba(26,26,26,0.9)] backdrop-blur-[10px] z-[100] data-[theme=light]:bg-[rgba(245,245,245,0.9)]" data-theme={theme}>
